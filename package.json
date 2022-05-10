@@ -20,6 +20,8 @@
     "mongoose": "^6.3.2",
     "mongoose-paginate-v2": "^1.6.3",
     "nodemon": "^2.0.16",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.3.0"
   }
 }
