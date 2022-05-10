@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const swaggerJsonDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express')
+swaggerDocument = require('./swagger.json');
 
 require("dotenv").config();
 require("./config/database").connect();
@@ -46,8 +47,12 @@ const swaggerOptions = {
 }
 
 const swaggerDocs = swaggerJsonDoc(swaggerOptions)
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
-
+// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+app.use(
+	'/api-docs',
+	swaggerUI.serve,
+	swaggerUI.setup(swaggerDocument)
+);
 
 
 // bodyParser middleware
