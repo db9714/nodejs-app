@@ -11,15 +11,15 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.json()); // to use body object in requests
 
 router.route("/").get((req, res) => {
-  res.send("Welcome to Node JS App")
+    res.send("Welcome to Node JS App")
 })
 
 router.route("/").post((req, res) => {
-    const { name, description,email,password } = req.body;
+    const { name, description, email, password } = req.body;
     console.log(req.body)
     AuthModel.find({ email: email }).then((res1) => {
         if (res1) {
-            const newUser = AuthModel({ name, description,email,password })
+            const newUser = AuthModel({ name, description, email, password })
             newUser.save()
                 .then((user) => {
                     return res.status(200).json(user)
@@ -51,8 +51,8 @@ router.route("/all").get(paginatedData(AuthModel), (req, res) => {
 })
 
 router.route("/user/:id").patch((req, res) => {
-    const { name, description} = req.body;
-    AuthModel.findByIdAndUpdate(req.params.id, { description: description,name:name }, { new: true }, function (err, result) {
+    const { name, description } = req.body;
+    AuthModel.findByIdAndUpdate(req.params.id, { description: description, name: name }, { new: true }, function (err, result) {
         if (err) {
             return res.status(500).json({
                 msg: 'Error',
@@ -64,7 +64,7 @@ router.route("/user/:id").patch((req, res) => {
 
 })
 router.route("/:id").get((req, res) => {
-    const { name, description} = req.body;
+    const { name, description } = req.body;
     AuthModel.findById(req.params.id, function (err, result) {
         if (err) {
             return res.status(500).json({
@@ -184,6 +184,5 @@ router.route("/welcome").get(auth, (req, res) => {
         return res.status(500).json({ "Error": err })
     })
 })
-
 
 module.exports = router;

@@ -48,12 +48,12 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Get all users in system",
+                "summary": "Get the users in system by id",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "User that we want to create",
+                        "description": "User that we want to retrieve",
                         "schema": {
                             "$ref": "#/definitions/User"
                         }
@@ -74,7 +74,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Create new user in system",
+                "summary": "Create new user in system",
                 "parameters": [
                     {
                         "name": "name",
@@ -103,12 +103,12 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Get all users in system",
+                "summary": "delete user by id in the system",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "User that we want to create",
+                        "description": "Delete user the user by Id",
                         "schema": {
                             "$ref": "#/definitions/User"
                         }
@@ -129,14 +129,14 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "Create new user in system",
+                "summary": "Login the user",
                 "parameters": [
                     {
                         "name": "name",
                         "in": "body",
-                        "description": "User that we want to create",
+                        "description": "Login the user",
                         "schema": {
-                            "$ref": "#/definitions/LoggedUser"
+                            "$ref": "#/definitions/LoginUser"
                         }
                     }
                 ],
@@ -147,7 +147,7 @@
                     "200": {
                         "description": "New user is created",
                         "schema": {
-                            "$ref": "#/definitions/LoggedUser"
+                            "$ref": "#/definitions/LoginUser"
                         }
                     }
                 }
@@ -177,7 +177,7 @@
                 }
             }
         },
-        "LoggedUser": {
+        "LoginUser": {
             "required": [
                 "password",
                 "email"
